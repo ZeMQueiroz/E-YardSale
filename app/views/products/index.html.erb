@@ -1,0 +1,30 @@
+<h1>Products</h1>
+<div class="container">
+  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+    <div class="row search-form-control form-group">
+      <input class="form-control string required col-10" type="text" name="search[query]" id="search_query" />
+      <button name="button" type="submit" class="btn btn-secondary col-2">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  <% end %>
+</div>
+<div class="container">
+  <div class="cards">
+    <% @products.each do |product| %>
+    <div class="card" style="width: 16rem; height: 18rem;">
+      <img src="https://cdn.shopify.com/s/files/1/0070/7032/files/camera_56f176e3-ad83-4ff8-82d8-d53d71b6e0fe.jpg?v=1527089512" class="card-img-top" alt="..."/>
+    <div class="card-body" style="width: 16rem; height: 8rem;">   
+      <h5 class="card-title"><%= product.name %></h5>
+      <div class="card-text">
+        <p><%= product.price %></p>
+        <p><%= product.rating %></p>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= link_to "show more", product_path(product) %>
+    </div> 
+    </div>
+    <% end %>
+  </div>
+</div>
